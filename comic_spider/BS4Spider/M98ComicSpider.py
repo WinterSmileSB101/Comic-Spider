@@ -88,5 +88,24 @@ def replace_invalide_words(target):
 
     return target
 
+
+# 获取跳转之后的真实302 地址
+def handle_http302(link):
+    headers = {
+        'User-Agent': 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'
+    }
+
+    proxies = {
+        'http': "http://172.22.8.39:3128",
+        'https': "http://172.22.8.39:3128"
+    }
+    res = requests.get(link, headers=headers, proxies=proxies)
+    url302_final = res.url
+    print(url302_final)
+
+
 host = "https://www.98comic.com"
-get_all_98comic(host)  # 入口
+# get_all_98comic(host)  # 入口
+
+# true url:https://pic.98comic.com/ede4f7cab3a61bca5b55133a2bac2c35/3F747D20283F3F7F7B3D737F7D797320283F5E3F23272023203F7173644F2020213F6A4F202020214F24252925213E5A40573D17063D3.jpg
+handle_http302("https://www.98comic.com/g.php?ede4f7cab3a61bca5b55133a2bac2c35/3F747D20283F3F7F7B3D737F7D797320283F5E3F23272023203F7173644F2020213F6A4F202020214F24252925213E5A40573D2C21991")
