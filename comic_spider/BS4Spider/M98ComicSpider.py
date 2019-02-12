@@ -104,9 +104,20 @@ def handle_http302(link):
     print(url302_final)
 
 
+def handle_img_url(link:str):
+    oldHead = "https://www.98comic.com/g.php?"
+    newHead = "https://pic.98comic.com/"
+    oldTail = "2C21991"
+    newTail = "17063D3.jpg"
+
+    url302_final = link.replace(oldHead,newHead)
+    url302_final = url302_final.replace(oldTail,newTail)
+    print(url302_final)
+
+
 host = "https://www.98comic.com"
 # get_all_98comic(host)  # 入口
 
 # 替换 https://www.98comic.com/g.php? 为 https://pic.98comic.com/，替换 2C21991 为 17063D3.jpg
 # true url:https://pic.98comic.com/ede4f7cab3a61bca5b55133a2bac2c35/3F747D20283F3F7F7B3D737F7D797320283F5E3F23272023203F7173644F2020213F6A4F202020214F24252925213E5A40573D17063D3.jpg
-handle_http302("https://www.98comic.com/g.php?ede4f7cab3a61bca5b55133a2bac2c35/3F747D20283F3F7F7B3D737F7D797320283F5E3F23272023203F7173644F2020213F6A4F202020214F24252925213E5A40573D2C21991")
+handle_img_url("https://www.98comic.com/g.php?ede4f7cab3a61bca5b55133a2bac2c35/3F747D20283F3F7F7B3D737F7D797320283F5E3F23272023203F7173644F2020213F6A4F202020214F24252925213E5A40573D2C21991")
